@@ -1,0 +1,1 @@
+If the main project (.zpr) does not run correctly, move the files from the fonts, textures, and sounds directories to the src directory and run the .zpr again.
