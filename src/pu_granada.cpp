@@ -1,6 +1,6 @@
 #include "pu_granada.h"
 
-pu_granada::pu_granada(Vector2u tam_resol) : powerup(tam_resol, "granada.png") {
+pu_granada::pu_granada(Vector2u tam_resol) : powerup(tam_resol, "textures/granada.png") {
 
 }
 

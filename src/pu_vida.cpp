@@ -1,6 +1,6 @@
 #include "pu_vida.h"
 
-pu_vida::pu_vida(Vector2u tam_resol) : powerup(tam_resol, "powerup_vida.png") {
+pu_vida::pu_vida(Vector2u tam_resol) : powerup(tam_resol, "textures/powerup_vida.png") {
 
 }
 

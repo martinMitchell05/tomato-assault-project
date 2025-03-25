@@ -7,30 +7,30 @@ using namespace std;
 
 esc_tabla::esc_tabla(Time x_min, Vector2u tam_resol) {
 	//Se crea y configura la imagen de fondo
-	fondo.loadFromFile("Fondo_ini.png");
+	fondo.loadFromFile("textures/Fondo_ini.png");
 	spr_fondo.setTexture(fondo);
 	spr_fondo.setColor({255,255,255,90});
 	spr_fondo.setOrigin((fondo.getSize().x/2), (fondo.getSize().y/2));
 	spr_fondo.setPosition(tam_resol.x/2, tam_resol.y/2);
 	spr_fondo.setScale(float(tam_resol.x)/fondo.getSize().x,float(tam_resol.y)/fondo.getSize().y);
 	
-	//La música continua desde la escena anterior
-	beat_F.openFromFile("beat_1.ogg");
+	//La mï¿½sica continua desde la escena anterior
+	beat_F.openFromFile("sounds/beat_1.ogg");
 	beat_F.play();
 	beat_F.setPlayingOffset(x_min);
 	beat_F.setVolume(25.0);
 	beat_F.setLoop(true);
 	
-	//Se crea y configura el botón para volver al menú
-	b_volver.loadFromFile("volver.png");
+	//Se crea y configura el botï¿½n para volver al menï¿½
+	b_volver.loadFromFile("textures/volver.png");
 	spr_volver.setTexture(b_volver);
 	spr_volver.setPosition(80,tam_resol.y-100);
 	spr_volver.setScale(tam_resol.x/1280.0*0.65,tam_resol.y/720.0*0.65);
 	
-	//Tipografía utilizada 
-	fuente2.loadFromFile("DragonSlayer.ttf");
+	//Tipografï¿½a utilizada 
+	fuente2.loadFromFile("fonts/DragonSlayer.ttf");
 	
-	//Creación del texto para los nombres de la tabla 
+	//Creaciï¿½n del texto para los nombres de la tabla 
 	tex_tabla.setFont(fuente2);
 	tex_tabla.setCharacterSize(20);
 	tex_tabla.setOrigin(150,150);
@@ -38,7 +38,7 @@ esc_tabla::esc_tabla(Time x_min, Vector2u tam_resol) {
 	tex_tabla.setFillColor({255,255,255});
 	tex_tabla.setScale(tam_resol.x/1280.0,tam_resol.y/720.0);
 	
-	//Creación del texto para los valores de la tabla 
+	//Creaciï¿½n del texto para los valores de la tabla 
 	pto_tabla.setFont(fuente2);
 	pto_tabla.setCharacterSize(20);
 	pto_tabla.setOrigin(20,150);
@@ -79,7 +79,7 @@ esc_tabla::esc_tabla(Time x_min, Vector2u tam_resol) {
 }
 
 void esc_tabla :: actualizar(RenderWindow &w,juego &j) {
-	//Despues del tiempo de espera se habilita el uso del botón
+	//Despues del tiempo de espera se habilita el uso del botï¿½n
 	if (t_espera_inic.getElapsedTime().asMilliseconds() > 300 ){
 		FloatRect f1 = spr_volver.getGlobalBounds();
 		if (f1.contains(Mouse::getPosition(w).x, Mouse::getPosition(w).y)) {

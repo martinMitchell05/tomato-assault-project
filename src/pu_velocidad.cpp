@@ -1,6 +1,6 @@
 #include "pu_velocidad.h"
 
-pu_velocidad::pu_velocidad(Vector2u tam_resol) : powerup(tam_resol, "zapatillas_ligeras.png") {
+pu_velocidad::pu_velocidad(Vector2u tam_resol) : powerup(tam_resol, "textures/zapatillas_ligeras.png") {
 
 }
 

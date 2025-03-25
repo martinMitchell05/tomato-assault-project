@@ -106,34 +106,34 @@ powerup* elegirPow(Vector2u tam_resol, prota p){
 
 esc_partida::esc_partida(Vector2u tam_resol) : p1(tam_resol) {
 	//Carga musica de fondo
-	batalla.openFromFile("batalla.ogg");
+	batalla.openFromFile("sounds/batalla.ogg");
 	batalla.play();
 	batalla.setVolume(20.0);
 	batalla.setLoop(true);
 	
 	//Carga y configuracion de imagen de fondo
-	tex_fondo.loadFromFile("background.png");
+	tex_fondo.loadFromFile("textures/background.png");
 	spr_fondo.setTexture(tex_fondo);
 	spr_fondo.setOrigin(tex_fondo.getSize().x/2,tex_fondo.getSize().y/2);
-	//Se ajusta al tamaño de la resolucion
+	//Se ajusta al tamaï¿½o de la resolucion
 	spr_fondo.scale(float(tam_resol.x)/tex_fondo.getSize().x,float(tam_resol.y)/tex_fondo.getSize().y);
 	spr_fondo.setPosition((tam_resol.x)/2,(tam_resol.y)/2);
 	
 	//Carga de textura de enemigos
-	tex_enem_1.loadFromFile("enemigo.png");
-	tex_enem_2.loadFromFile("enemigo2.png");
-	tex_enem_3.loadFromFile("enemigo3.png");
-	tex_enem_4.loadFromFile("enemigo4.png");
+	tex_enem_1.loadFromFile("textures/enemigo.png");
+	tex_enem_2.loadFromFile("textures/enemigo2.png");
+	tex_enem_3.loadFromFile("textures/enemigo3.png");
+	tex_enem_4.loadFromFile("textures/enemigo4.png");
 	
 	//Tipografia utilizada
-	fuente.loadFromFile("DragonSlayer.ttf");
+	fuente.loadFromFile("fonts/DragonSlayer.ttf");
 	
 	//Configuracion del temporizador de tiempo vivo
 	t_tiem.setFont(fuente);
 	t_tiem.setPosition(tam_resol.x-70,10);
 	t_tiem.setCharacterSize(20);
 	t_tiem.setFillColor({0,0,0});
-	//Se ajusta al tamaño de la resolucion
+	//Se ajusta al tamaï¿½o de la resolucion
 	t_tiem.setScale(tam_resol.x/1280.0,tam_resol.y/720.0);
 	
 	//Configuracion texto preparacion
@@ -141,24 +141,24 @@ esc_partida::esc_partida(Vector2u tam_resol) : p1(tam_resol) {
 	preparate.setCharacterSize(40);
 	preparate.setOrigin(150,20);
 	preparate.setPosition(tam_resol.x/2,tam_resol.y/2-150);
-	preparate.setString("¡Preparate!");
+	preparate.setString("ï¿½Preparate!");
 	preparate.setFillColor({0,0,0});
-	//Se ajusta al tamaño de la resolucion
+	//Se ajusta al tamaï¿½o de la resolucion
 	preparate.setScale(tam_resol.x/1280.0,tam_resol.y/720.0);
 	
 	//Configuracion sonido powerup y colision al personaje
-	sb_powerup.loadFromFile("sonidoPowerUp.ogg");
+	sb_powerup.loadFromFile("sounds/sonidoPowerUp.ogg");
 	s_powerup.setBuffer(sb_powerup);
-	sb_golpe.loadFromFile("sonidogolpe.ogg");
+	sb_golpe.loadFromFile("sounds/sonidogolpe.ogg");
 	s_golpe.setBuffer(sb_golpe);
 	s_golpe.setVolume(100.0);
 	
 	//Carga y configura escudo de invulnerabilidad
-	tex_escudo.loadFromFile("escudo.png");
+	tex_escudo.loadFromFile("textures/escudo.png");
 	spr_escudo.setTexture(tex_escudo);
 	spr_escudo.setOrigin(tex_escudo.getSize().x/2,tex_escudo.getSize().y/2);
 	spr_escudo.setPosition(250,35);
-	//Se ajusta al tamaño de la resolucion
+	//Se ajusta al tamaï¿½o de la resolucion
 	spr_escudo.setScale(tam_resol.x/1280.0,tam_resol.y/720.0);
 }
 
@@ -213,7 +213,7 @@ void esc_partida::actualizar(RenderWindow &w , juego &j) {
 	}
 	t_tiem.setString(s_tvivo);	
 	
-	//Si ya hay un powerup en pantalla (no puede aparecer otro mientras este esté activo), revisa la colision del powerup con el protagonista
+	//Si ya hay un powerup en pantalla (no puede aparecer otro mientras este estï¿½ activo), revisa la colision del powerup con el protagonista
 	if ( !se_puede_agregar ){
 		if(colision(pow_en_pant,p1)){	//Si colisiona se ejecuta el sonido de powerup, se aplica la ventaja de este, se borra el powerup, comienza el tiempo del powerup activo y se permite agregar uno nuevo
 			s_powerup.play();

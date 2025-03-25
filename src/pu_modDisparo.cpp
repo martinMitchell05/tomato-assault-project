@@ -1,6 +1,6 @@
 #include "pu_modDisparo.h"
 
-pu_modDisparo::pu_modDisparo(Vector2u tam_resol) : powerup(tam_resol, "bullet.png") {
+pu_modDisparo::pu_modDisparo(Vector2u tam_resol) : powerup(tam_resol, "textures/bullet.png") {
 
 }
 

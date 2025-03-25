@@ -12,35 +12,35 @@ esc_fin::esc_fin(string tiem_fin,Vector2u tam_resol): nom_jug(fuente,20,sf::Colo
 	tiempo_act = stof(tiem_fin);
 	
 	//Se crea y configura la imagen de fondo
-	fondo.loadFromFile("fin.png");
+	fondo.loadFromFile("textures/fin.png");
 	spr_fondo.setTexture(fondo);
 	spr_fondo.setColor({255,255,255,90});
 	spr_fondo.setOrigin((fondo.getSize().x/2), (fondo.getSize().y/2));
 	spr_fondo.setPosition(tam_resol.x/2, tam_resol.y/2);
 	spr_fondo.setScale(float(tam_resol.x)/fondo.getSize().x,float(tam_resol.y)/fondo.getSize().y);
 	
-	//Configuración de la música de la escena
-	beat_2.openFromFile("beat_2.ogg");
+	//Configuraciï¿½n de la mï¿½sica de la escena
+	beat_2.openFromFile("sounds/beat_2.ogg");
 	beat_2.play();
 	beat_2.setVolume(25.0);
 	beat_2.setLoop(true);
 	
-	//Se crea y configura los botones para volver a jugar y volver al menú
-	b_volverMenu.loadFromFile("volveralmenu.png");
+	//Se crea y configura los botones para volver a jugar y volver al menï¿½
+	b_volverMenu.loadFromFile("textures/volveralmenu.png");
 	spr_volMen.setTexture(b_volverMenu);
 	spr_volMen.setPosition(150, tam_resol.y-120);
 	spr_volMen.setScale(tam_resol.x/1280.0 * 0.65,tam_resol.y/720.0 * 0.65);
 	
-	b_volverJugar.loadFromFile("volverajugar.png");
+	b_volverJugar.loadFromFile("textures/volverajugar.png");
 	spr_volJug.setTexture(b_volverJugar);
 	spr_volJug.setOrigin(b_volverJugar.getSize().x,0);
 	spr_volJug.setPosition(tam_resol.x-150, tam_resol.y-120);
 	spr_volJug.setScale(tam_resol.x/1280.0 * 0.65,tam_resol.y/720.0 * 0.65);
 	
-	//Tipografía utilizada
-	fuente.loadFromFile("Melted Monster.ttf");
+	//Tipografï¿½a utilizada
+	fuente.loadFromFile("fonts/Melted Monster.ttf");
 	
-	//Configuración de textos que aparecen en la pantalla
+	//Configuraciï¿½n de textos que aparecen en la pantalla
 	fin.setFont(fuente);
 	fin.setCharacterSize(60);
 	fin.setOrigin(130,30);
@@ -91,7 +91,7 @@ esc_fin::esc_fin(string tiem_fin,Vector2u tam_resol): nom_jug(fuente,20,sf::Colo
 }
 
 void esc_fin :: actualizar(RenderWindow &w,juego &j) {
-	//Despues del tiempo de espera se habilita el uso del botón
+	//Despues del tiempo de espera se habilita el uso del botï¿½n
 	if (t_espera_inic.getElapsedTime().asMilliseconds() > 300 ){
 		FloatRect f1 = spr_volMen.getGlobalBounds();
 		if (f1.contains(Mouse::getPosition(w).x, Mouse::getPosition(w).y)) {
@@ -109,7 +109,7 @@ void esc_fin :: actualizar(RenderWindow &w,juego &j) {
 			}
 		}
 		
-		//Cuando se cumple la condición, se guarda el nombre del jugador en el archivo de puntuaciones
+		//Cuando se cumple la condiciï¿½n, se guarda el nombre del jugador en el archivo de puntuaciones
 		if (Keyboard::isKeyPressed(Keyboard::Return) and hay_que_cambiar) {
 			puntajes p; strcpy(p.name,nom.c_str()); p.puntaje = tiempo_act;
 			tabla.Agregar(p);
@@ -144,7 +144,7 @@ void esc_fin :: dibujar(RenderWindow &w, juego &j){
 		nom_jug.update();
 		w.draw(nom_jug);
 	}
-	//Si ya guardo el nombre se dibuja el texto guardado con éxito
+	//Si ya guardo el nombre se dibuja el texto guardado con ï¿½xito
 	if(!hay_que_cambiar){
 		w.draw(guard_exi);
 	}

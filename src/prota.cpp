@@ -7,39 +7,39 @@ using namespace std;
 prota::prota(Vector2u tam_resol){
 	//Cargar texturas y configurar sprites del protagonista
 	tam_pant = tam_resol;
-	tex_prota.loadFromFile("prota.png");
-	tex_prota_2v.loadFromFile("prota_2vid.png");
-	tex_prota_1v.loadFromFile("prota_1vid.png");
-	tex_prota_0v.loadFromFile("fantasma.png");
+	tex_prota.loadFromFile("textures/prota.png");
+	tex_prota_2v.loadFromFile("textures/prota_2vid.png");
+	tex_prota_1v.loadFromFile("textures/prota_1vid.png");
+	tex_prota_0v.loadFromFile("textures/fantasma.png");
 	spr_prota.setTexture(tex_prota);
 	spr_prota.setPosition(tam_pant.x/2,tam_pant.y/2);
 	spr_prota.setOrigin(35,25);
 	spr_prota.setRotation(90);	
-	//Se escala el tamaño segun la resolucion en pantalla
+	//Se escala el tamaï¿½o segun la resolucion en pantalla
 	spr_prota.setScale(tam_resol.x/1280.0,tam_resol.y/720.0);
 	
-	//Configuración del sonido de disparo
-	m_son_disp.loadFromFile("burbujita.ogg");
+	//Configuraciï¿½n del sonido de disparo
+	m_son_disp.loadFromFile("sounds/burbujita.ogg");
 	m_disparo.setBuffer(m_son_disp);
 	
 	//Cargar texturas y configurar sprites de las vidas 
-	text_0vida.loadFromFile("0_vida.png");
-	text_1vida.loadFromFile("1_vida.png");
-	text_2vida.loadFromFile("2_vidas.png");
-	text_3vida.loadFromFile("3_vidas.png");
+	text_0vida.loadFromFile("textures/0_vida.png");
+	text_1vida.loadFromFile("textures/1_vida.png");
+	text_2vida.loadFromFile("textures/2_vidas.png");
+	text_3vida.loadFromFile("textures/3_vidas.png");
 	spr_contvida.setTexture(text_3vida);
 	spr_contvida.setOrigin(text_3vida.getSize().x/2, text_3vida.getSize().y/2);
 	spr_contvida.setPosition(100, 35);
-	//Se escala el tamaño segun la resolucion en pantalla
+	//Se escala el tamaï¿½o segun la resolucion en pantalla
 	spr_contvida.setScale(tam_resol.x/1280.0,tam_resol.y/720.0);
 	vel_segun_pant = (tam_resol.x/1280.0 + tam_resol.y/720.0)/2;
 }
 
 void prota::actualizar(RenderWindow &w){
-	//Se obtiene la posición del protagonista para calcular los limites de la pantalla y configurar su movimiento
+	//Se obtiene la posiciï¿½n del protagonista para calcular los limites de la pantalla y configurar su movimiento
 	Vector2f pos_prota = spr_prota.getPosition();
 	if(Keyboard::isKeyPressed(Keyboard::W) and pos_prota.y>25){
-		//Se multiplica por la velocidad (por defecto = 1) para cambiarla con los powerups y se multiplica por un corrector de velocidad según la resolución
+		//Se multiplica por la velocidad (por defecto = 1) para cambiarla con los powerups y se multiplica por un corrector de velocidad segï¿½n la resoluciï¿½n
 		spr_prota.move(0,-1*veloc*vel_segun_pant);
 	}
 	if(Keyboard::isKeyPressed(Keyboard::S) and pos_prota.y < (tam_pant.y-20)){
@@ -91,7 +91,7 @@ bool prota::hayQueDisparar(){
 	if(tiempo_tiro.getElapsedTime().asMilliseconds()<vel_disparo){
 		return false;
 	}
-	//Si detecta el botón de disparo reinicia el temporizador para el próximo disparo y retorna true porque hay que disparar
+	//Si detecta el botï¿½n de disparo reinicia el temporizador para el prï¿½ximo disparo y retorna true porque hay que disparar
 	if (Mouse::isButtonPressed(Mouse::Left)){
 		tiempo_tiro.restart();
 		return true;
@@ -101,7 +101,7 @@ bool prota::hayQueDisparar(){
 
 
 disparo prota::salioDisparo(){
-	//Guardas la posición del protagonista, su ángulo de rotación, se calcula la dirección a la que apunta y se crea el disparo
+	//Guardas la posiciï¿½n del protagonista, su ï¿½ngulo de rotaciï¿½n, se calcula la direcciï¿½n a la que apunta y se crea el disparo
 	Vector2f pos = spr_prota.getPosition();
 	float ang = spr_prota.getRotation()*M_PI/180;
 	Vector2f dir(cos(ang),sin(ang)); 
